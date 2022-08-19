@@ -1,0 +1,21 @@
+Componentes:
+1. Todos los componentes son funciones
+2. Todos los componentes inician con mayúsculas
+3. Siempre se retorna un único elemento (dentro de un div puedo poner dos p, otro div, etc.)
+
+const foo = () => {
+
+}
+
+foo()
+
+====
+
+const Foo = () => {
+
+}
+
+<Foo/>
+
+Javascript + XML = JSX
+<p>Hola mundo</p> = JSX
