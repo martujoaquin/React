@@ -1,11 +1,13 @@
 import Main from "../Main/Main"
 
-const ItemListContainer = ()=>{
+const ItemListContainer = (props)=>{
     return (
         <>
-            <Main test="Comision 37080" 
+            <h3>{props.saludo}</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae sit fuga aperiam odio cumque corrupti excepturi, modi omnis cupiditate vel consequatur sed. Rerum deleniti natus porro, et modi placeat nemo.</p>
+            {/* <Main test="Comision 37080" 
             fecha={undefined}
-            alumno={{nombre:'Tomas', curso:'React'}}/>
+            alumno={{nombre:'Tomas', curso:'React'}}/> */}
         </>
     )
 }
