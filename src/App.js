@@ -1,13 +1,17 @@
 //Fragments 
 //invisible para el DOM, no le puedo dar estilos
 
-import Navbar from "./components/Nav/Navbar";
+import Header from "./components/Header/Header";
+import ItemListContainer from "./components/ItemListContainer/ItemListContainer"
 import './index.css';
+import Footer from "./components/Footer/Footer"
 
 const App = () => {
     return (
         <>
-            <Navbar/>
+            <Header/>
+            <ItemListContainer/>
+            <Footer/>
         </>
     ) 
 };

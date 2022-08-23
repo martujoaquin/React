@@ -1,6 +1,8 @@
+import CartWidget from '../CartWidget/CartWidget';
 import './index.css'
 
-const Navbar =()=>{
+const Navbar =(props)=>{
+    console.log(props);
     return (
         <nav className="navbar">
             <div className="logoMarca">
@@ -11,7 +13,7 @@ const Navbar =()=>{
                     <li><a className='a' href="google.com">INICIO</a></li>
                     <li><a href="google.com">PRODUCTOS</a></li>
                     <li><a href="google.com">CONTACTO</a></li>
-                    <li><a href="google.com">CARRITO</a></li>
+                    <CartWidget/>
                 </ul>
             </div>
         </nav>
