@@ -7,10 +7,15 @@ import './index.css';
 import Footer from "./components/Footer/Footer"
 
 const App = () => {
+
+    const saludo = 'Bienvenidos!'
+    const saludar = ()=>{
+        console.log('holis');
+    }
     return (
         <>
             <Header/>
-            <ItemListContainer saludo="Bienvenidos!"/>
+            <ItemListContainer saludo={saludo} saludar={saludar}/>
             <Footer/>
         </>
     ) 

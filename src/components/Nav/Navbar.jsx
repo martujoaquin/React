@@ -1,3 +1,4 @@
+import Button from '../Button/Button';
 import CartWidget from '../CartWidget/CartWidget';
 import './index.css'
 
@@ -13,8 +14,9 @@ const Navbar =(props)=>{
                     <li><a className='a' href="google.com">INICIO</a></li>
                     <li><a href="google.com">PRODUCTOS</a></li>
                     <li><a href="google.com">CONTACTO</a></li>
-                    <CartWidget/>
                 </ul>
+                <Button value='Sign In' variante='primary'/>
+                <CartWidget/>
             </div>
         </nav>
     )

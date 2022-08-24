@@ -1,10 +1,11 @@
 
 import Navbar from "../Nav/Navbar";
+import "./Footer.css"
 
 const Footer = () => {
     return (
         <>
-            <Navbar isFooter={true}/>
+            <Navbar/>
         </>
     ) 
 };
