@@ -9,7 +9,11 @@ const Counter = ({stock}) =>{
     };
 
     const restar = () =>{
-        setCount(count-1);
+        count > 0 && setCount(count-1);
+    };
+    
+    const onAdd = () =>{
+        console.log("Agrego producto");
     };
 
     return (
@@ -17,7 +21,7 @@ const Counter = ({stock}) =>{
             <button onClick={sumar}>+</button>
             <button onClick={restar}>-</button>
             <p>Count: {count}</p>
-            <button /*disabled= {count === 0}*/>Agregar al carrito</button>
+            <button onClick={onAdd} /*disabled= {count === 0}*/>Agregar al carrito</button>
         </div>
     )
 }
