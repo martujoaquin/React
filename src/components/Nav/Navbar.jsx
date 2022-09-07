@@ -1,6 +1,7 @@
 import Button from '../Button/Button';
 import CartWidget from '../CartWidget/CartWidget';
 import './index.css'
+import {Link} from 'react-router-dom';
 
 const Navbar =(props)=>{
     console.log(props);
@@ -11,9 +12,12 @@ const Navbar =(props)=>{
             </div>
             <div className="botones">
                 <ul className='lista'>
-                    <li><a className='a' href="google.com">INICIO</a></li>
-                    <li><a href="google.com">PRODUCTOS</a></li>
-                    <li><a href="google.com">CONTACTO</a></li>
+                    <li><Link className='a' to={'/'}>INICIO</Link></li>
+                    <Link to={'/'}><li>PRODUCTOS</li></Link>
+                    <li><Link to="/contacto">CONTACTO</Link></li>
+                    <li><Link to="/category/remeras">REMERAS</Link></li>
+                    <li><Link to="/category/camisas">CAMISAS</Link></li>
+                    <li><Link to="/category/gorras">GORRAS</Link></li>
                 </ul>
                 <Button value='Sign In' variante='primary'/>
                 <CartWidget/>
