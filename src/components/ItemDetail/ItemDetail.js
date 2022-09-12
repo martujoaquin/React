@@ -1,9 +1,12 @@
 import React from 'react';
+import { useState } from 'react';
 import Counter from '../ItemCount/Counter';
 
 const ItemDetail = ({ item }) => {
-    const onAdd = (param) => {
-        console.log(param);
+    const [cantidad, setCantidad] = useState(0);
+
+    const onAdd = (arg) => {
+        setCantidad(arg);
     };
     return (
         <div style={{ display: 'flex' }}>
@@ -21,6 +24,11 @@ const ItemDetail = ({ item }) => {
                         );
                     })}
                 </ul>
+                {cantidad === 0 ? (
+                    <h2>Cantidad es 0</h2>
+                ) : (
+                    <h2>Cantidad es {cantidad}</h2>
+                )}
                 <Counter stock={10} initial={1} onAdd={onAdd}/>
             </div>
         </div>
