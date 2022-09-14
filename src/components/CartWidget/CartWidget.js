@@ -2,7 +2,10 @@ import {TiShoppingCart} from "react-icons/ti";
 
 const CartWidget = ()=>{
     return(
-        <TiShoppingCart/>
+        <div style={{display:'flex', alignItems: 'center'}}>
+            <TiShoppingCart/>
+            <span>0</span>
+        </div>
     )
 }
 

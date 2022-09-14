@@ -9,6 +9,7 @@ import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailCont
 import { BrowserRouter } from "react-router-dom";
 import {Route, Routes} from 'react-router-dom';
 import Item from "./components/Item/Item";
+import CartProvider from "./context/CartContext";
 
 const App = () => {
 
@@ -17,18 +18,20 @@ const App = () => {
         console.log('holis');
     }
     return (
-        <BrowserRouter>
-            <Header/>
-            <Routes>
-                <Route path='/' element={<ItemListContainer saludo={saludo} saludar={saludar}/>}/>
+        <CartProvider>
+            <BrowserRouter>
+                <Header/>
+                <Routes>
+                    <Route path='/' element={<ItemListContainer saludo={saludo} saludar={saludar}/>}/>
 
-                <Route path="/category/:categoryName" element={<Item/>}/>
+                    <Route path="/category/:categoryName" element={<Item/>}/>
 
 
-                <Route path="/detail" element={<ItemDetailContainer/>}/>
-            </Routes>
-            <Footer/>
-        </BrowserRouter>
+                    <Route path="/detail" element={<ItemDetailContainer/>}/>
+                </Routes>
+                <Footer/>
+            </BrowserRouter>
+        </CartProvider>
     ) 
 };
 //export const Otra = () => 'Hola Mundo';

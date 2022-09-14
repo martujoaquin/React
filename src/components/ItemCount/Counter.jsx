@@ -16,12 +16,16 @@ const Counter = ({stock}) =>{
         console.log("Agrego producto");
     };
 
+    const agregarAlCarrito = () => {
+        onAdd(count);
+    };
+
     return (
         <div>
             <button onClick={sumar}>+</button>
             <button onClick={restar}>-</button>
             <p>Count: {count}</p>
-            <button onClick={onAdd} /*disabled= {count === 0}*/>Agregar al carrito</button>
+            <button onClick={agregarAlCarrito}>Agregar al carrito</button>
         </div>
     )
 }

@@ -1,13 +1,20 @@
 import React from 'react';
 import { useState } from 'react';
 import Counter from '../ItemCount/Counter';
+import { useContext } from 'react';
+import { CartContext } from '../../context/CartContext';
+import { Link } from 'react-router-dom';
 
 const ItemDetail = ({ item }) => {
     const [cantidad, setCantidad] = useState(0);
 
-    const onAdd = (arg) => {
-        setCantidad(arg);
-    };
+    const {addToCart} = useContext(CartContext);
+
+    const onAdd = (cantidadItem) => {
+        setCantidad(cantidadItem);
+        addToCart(item,cantidadItem);
+    }
+
     return (
         <div style={{ display: 'flex' }}>
             <img src={item.img} alt={item.title} />
@@ -25,11 +32,10 @@ const ItemDetail = ({ item }) => {
                     })}
                 </ul>
                 {cantidad === 0 ? (
-                    <h2>Cantidad es 0</h2>
+                   <Counter stock = {item.stock} initial={1} onAdd={onAdd}/>
                 ) : (
-                    <h2>Cantidad es {cantidad}</h2>
+                    <Link to="/cart"> Ir al carrito </Link>
                 )}
-                <Counter stock={10} initial={1} onAdd={onAdd}/>
             </div>
         </div>
     );
