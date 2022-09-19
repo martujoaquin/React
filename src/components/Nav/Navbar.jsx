@@ -4,9 +4,8 @@ import './index.css'
 import {Link} from 'react-router-dom';
 
 const Navbar =(props)=>{
-    console.log(props);
     return (
-        <nav className="navbar">
+        <nav className="Navbar">
             <div className="logoMarca">
                 <h3>LOGO MARCA</h3>
             </div>
@@ -20,7 +19,9 @@ const Navbar =(props)=>{
                     <li><Link to="/category/gorras">GORRAS</Link></li>
                 </ul>
                 <Button value='Sign In' variante='primary'/>
-                <CartWidget/>
+                <link to='/cart'>
+                    <CartWidget/>
+                </link>
             </div>
         </nav>
     )

@@ -4,7 +4,7 @@ const CartWidget = ()=>{
     return(
         <div style={{display:'flex', alignItems: 'center'}}>
             <TiShoppingCart/>
-            <span>0</span>
+            <span>{}</span>
         </div>
     )
 }

@@ -7,20 +7,21 @@ import { Link } from 'react-router-dom';
 
 const ItemDetail = ({ item }) => {
     const [cantidad, setCantidad] = useState(0);
-
-    const {addToCart} = useContext(CartContext);
+    const {addToCart, getProductQuantity} = useContext(CartContext);
 
     const onAdd = (cantidadItem) => {
         setCantidad(cantidadItem);
         addToCart(item,cantidadItem);
     }
 
+    const quantity = getProductQuantity(item.id);
+
     return (
-        <div style={{ display: 'flex' }}>
+        <div className="detail" style={{ display: 'flex' }}>
             <img src={item.img} alt={item.title} />
-            <div>
+            <div className='info'>
                 <h3>{item.title}</h3>
-                <h3>$ {item.price}</h3>
+                <h3>$ {item.price}.-</h3>
                 <p>talles:</p>
                 <ul>
                     {item.talles?.map((talle) => {
@@ -32,7 +33,7 @@ const ItemDetail = ({ item }) => {
                     })}
                 </ul>
                 {cantidad === 0 ? (
-                   <Counter stock = {item.stock} initial={1} onAdd={onAdd}/>
+                   <Counter stock = {item.stock} initial={quantity} onAdd={onAdd}/>
                 ) : (
                     <Link to="/cart"> Ir al carrito </Link>
                 )}

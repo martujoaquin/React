@@ -40,7 +40,7 @@ const Item = ()=>{
                 //console.log('Finally');
             });
         }
-    }, []);
+    }, [categoryName]);
         
 
     return (
