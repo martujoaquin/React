@@ -1,5 +1,6 @@
 import React from 'react';
 import { createContext, useState } from 'react';
+import { useEffect } from 'react';
 
 export const CartContext = createContext();
 
@@ -9,6 +10,7 @@ export const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
+    const [unidades, setUnidades] = useState(0);
     //console.log(props);
     //estados
     //funciones
@@ -47,7 +49,13 @@ const CartProvider = ({ children }) => {
     };
 
     //calcular total de unidades para el cart widget
-    const totalQuality = () => {};
+    const totalQuality = () => {
+        let acumulador = 0;
+        cart.forEach((prod)=>{
+            acumulador += prod.cantidad;
+        });
+        setUnidades(acumulador);
+    };
 
     //calcular total precio
     const totalPrice = () => {
@@ -74,6 +82,10 @@ const CartProvider = ({ children }) => {
         const product = cart.find((prod)=> prod.id === id);
         return product?.cantidad;
     };
+
+    useEffect(()=>{
+        totalQuality();
+    }, [cart]);
 
     return (
         <CartContext.Provider value={{ cart, addToCart, clearCart, deleteOne, totalPrice, totalQuality, getProductQuantity }}>

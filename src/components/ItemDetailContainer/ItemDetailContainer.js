@@ -3,15 +3,17 @@ import ItemDetail from '../ItemDetail/ItemDetail';
 import { products } from '../../mock/products';
 import { useParams } from 'react-router-dom';
 import ClipLoader from 'react-spinners/ClipLoader';
+import { db } from '../../firebaseConfig';
+import { getDoc, doc, collection } from 'firebase/firestore';
 
-const ItemDetailContainer = ({saludo}) => {
+const ItemDetailContainer = () => {
     const [item, setItem] = useState({});
-    const [isLoading, setIsLoading] = useState(true);
+    /*const [isLoading, setIsLoading] = useState(true);*/
 
-    const {categoryName} = useParams();
+    const {idProd} = useParams();
 
     useEffect(() => {
-        const getProduct = () =>
+        /*const getProduct = () =>
             new Promise((res, rej) => {
                 //realizo el find para encontrar un solo producto
                 const prodFiltrados = products.filter((prod) => prod.category === categoryName);
@@ -26,32 +28,19 @@ const ItemDetailContainer = ({saludo}) => {
             })
             .catch((error) => {
                 console.log(error);
+            });*/
+            const itemCollection = collection(db, 'productos');
+            const ref = doc(itemCollection, idProd);
+            
+            getDoc(ref).then((res)=>{
+                setItem({id: res.id, ...res.data()});
             });
-            return () => {
-                setIsLoading(true);
-            } 
-
-    }, [categoryName]);
+    }, [idProd]);
 
     return (
     <div 
-        style={{
-            display:'flex',
-            justifyContent: 'center',
-            flexDirection: 'column',
-        }}>
-            {isLoading ? (
-                <>
-                    <ClipLoader color='black' size={150}/>
-                </>
-            ) : (
-                <>
-                    <h2 style={{textAlign: 'center'}}>{saludo}</h2>
-                    <ItemDetail item={item} />
-                </>
-            )
-        }
-    
+        style={{ minHeight: '70vh' }}>
+            <ItemDetail item={item}/>
     </div>
     );
 };
